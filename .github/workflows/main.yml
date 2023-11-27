@@ -31,5 +31,5 @@ jobs:
             - name: print out the output of a previous step
               run: |
 
-                echo " STEPID the var ${{ steps.stepid.output.myVar }}"
-                echo " STEPNAME the var ${{ steps.stepid.somethingsomething.myVar }}"
+                echo " STEPID the var ${{ steps.stepid.outputs.myVar }}"
+                echo " STEPNAME the var ${{ steps.somethingsomething.outputs.myVar }}"
