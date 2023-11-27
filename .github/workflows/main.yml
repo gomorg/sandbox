@@ -1,0 +1,35 @@
+name: mainjaml
+
+on:
+    workflow_dispatch:
+        inputs:
+            myVar:
+                type: string
+                required: true
+                description: 'asd'
+                default: 'yoooo'
+
+
+jobs:
+    dajob:
+        runs-on: ubuntu-latest
+        steps:
+            - name: somethingsomething
+              id: stepid
+              run: |
+
+                echo "the quick brown fox jumps over the lazy dog ${{ github.event.inputs.myVar }}"
+                echo "print out stuff"
+
+                # echo "::set-output name=myVar::${{ github.event.inputs.myVar }}"
+
+                # another syntax suggested by the docs:
+                echo "myVar=${{ github.event.inputs.myVar }}" >> $GITHUB_OUTPUT
+
+
+
+            - name: print out the output of a previous step
+              run: |
+
+                echo " STEPID the var ${{ steps.stepid.output.myVar }}"
+                echo " STEPNAME the var ${{ steps.stepid.somethingsomething.myVar }}"

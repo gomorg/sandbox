@@ -1,0 +1,19 @@
+name: some display name
+
+on:
+    workflow_call:
+        inputs:
+            myVar:
+                type: string
+                required: true
+                description: 'asd'
+
+
+jobs:
+    dajob:
+        runs-on: ubuntu-latest
+        steps:
+            - name: somethingsomething
+              run: |
+
+                echo "the quick brown fox jumps over the lazy dog ${{ inputs.myVar }}"
