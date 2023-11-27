@@ -21,10 +21,10 @@ jobs:
                 echo "the quick brown fox jumps over the lazy dog ${{ github.event.inputs.myVar }}"
                 echo "print out stuff"
 
-                # echo "::set-output name=myVar::${{ github.event.inputs.myVar }}"
+                echo "::set-output name=myVar::${{ github.event.inputs.myVar }}"
 
                 # another syntax suggested by the docs:
-                echo "myVar=${{ github.event.inputs.myVar }}" >> $GITHUB_OUTPUT
+                # echo "myVar=${{ github.event.inputs.myVar }}" >> $GITHUB_OUTPUT
 
 
 
