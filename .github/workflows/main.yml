@@ -12,24 +12,16 @@ on:
 
 jobs:
     dajob:
-        runs-on: ubuntu-latest
-        steps:
-            - name: somethingsomething
-              id: stepid
-              run: |
-
-                echo "the quick brown fox jumps over the lazy dog ${{ github.event.inputs.myVar }}"
-                echo "print out stuff"
-
-                echo "::set-output name=myVar::${{ github.event.inputs.myVar }}"
-
-                # another syntax suggested by the docs:
-                # echo "myVar=${{ github.event.inputs.myVar }}" >> $GITHUB_OUTPUT
-
-
-
-            - name: print out the output of a previous step
-              run: |
-
-                echo " STEPID the var ${{ steps.stepid.outputs.myVar }}"
-                echo " STEPNAME the var ${{ steps.somethingsomething.outputs.myVar }}"
+      uses: convictional/trigger-workflow-and-wait@v1.6.5
+      with:
+        owner: gomorg
+        repo: PeakGit/mercury-chatapp-infra
+        github_token: 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
+        github_user: gomorg 
+        workflow_file_name: deploy.yml
+        ref: main
+        wait_interval: 300
+        client_payload: '{"environment": "dev", "frontendImageTag": "unchanged", backendImageTag: "unchanged", "helmChartVersion": "latest"}'
+        propagate_failure: false
+        trigger_workflow: true
+        wait_workflow: true
