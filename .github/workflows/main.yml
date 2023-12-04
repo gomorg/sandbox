@@ -21,8 +21,8 @@ jobs:
         - name: apitest            
           uses: convictional/trigger-workflow-and-wait@v1.6.5
           with:
-            owner: gomorg
-            repo: PeakGit/mercury-chatapp-infra
+            owner: PeakGit
+            repo: mercury-chatapp-infra
             github_token: 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
             github_user: gomorg 
             workflow_file_name: deploy.yml
