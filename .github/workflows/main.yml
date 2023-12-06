@@ -18,17 +18,30 @@ jobs:
           run: |
             echo "something something"
 
-        - name: apitest            
-          uses: convictional/trigger-workflow-and-wait@v1.6.5
+        # - name: apitest            
+        #   uses: convictional/trigger-workflow-and-wait@v1.6.5
+        #   with:
+        #     owner: PeakGit
+        #     repo: mercury-chatapp-infra
+        #     github_token: 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
+        #     github_user: gomorg 
+        #     workflow_file_name: deploy.yml
+        #     ref: main
+        #     wait_interval: 300
+        #     client_payload: '{"environment": "dev", "frontendImageTag": "unchanged", "backendImageTag": "unchanged", "helmChartVersion": "latest"}'
+        #     propagate_failure: false
+        #     trigger_workflow: true
+        #     wait_workflow: true
+
+        - name: Login via Azure CLI
+          uses: azure/login@v1
           with:
-            owner: PeakGit
-            repo: mercury-chatapp-infra
-            github_token: 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
-            github_user: gomorg 
-            workflow_file_name: deploy.yml
-            ref: main
-            wait_interval: 300
-            client_payload: '{"environment": "dev", "frontendImageTag": "unchanged", "backendImageTag": "unchanged", "helmChartVersion": "latest"}'
-            propagate_failure: false
-            trigger_workflow: true
-            wait_workflow: true
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: acr login test
+          run: |
+            az acr login -n creuwpeakcore
+
+        - name: acr pull test
+          run: |
+            docker pull creuwpeakcore.azurecr.io/mercury-chatapp-server:edd357fbabf8adfa30a52ac0626f3c6c85f35240
