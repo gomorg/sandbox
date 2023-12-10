@@ -46,7 +46,8 @@ jobs:
           with:
             repository: 'supertokens/supertokens-docker-postgresql'
             ref: 'master'
+            path: 'supertokens'
 
         - name: debug
           run: |
-            tree && ls -l 
+            tree && ls -l  && ls -ld supertokens && du -sh supertokens && ls -l supertokens && tree supertokens
