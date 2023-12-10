@@ -41,7 +41,7 @@ jobs:
         - name: clone supertokens
           uses: actions/checkout@v2
           with:
-            repository: '/supertokens/supertokens-docker-postgresql'
+            repository: 'supertokens/supertokens-docker-postgresql'
             ref: 'main'
 
         - name: debug
