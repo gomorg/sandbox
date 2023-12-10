@@ -37,11 +37,13 @@ jobs:
           uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+        - name: clone supertokens
+          uses: actions/checkout@v2
+          with:
+            repository: '/supertokens/supertokens-docker-postgresql'
+            ref: 'main'
 
-        - name: acr login test
+        - name: debug
           run: |
-            az acr login -n creuwpeakcore
-
-        - name: acr pull test
-          run: |
-            docker pull creuwpeakcore.azurecr.io/mercury-chatapp-server:edd357fbabf8adfa30a52ac0626f3c6c85f35240
+            tree && ls -l 
