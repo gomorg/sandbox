@@ -12,7 +12,7 @@ on:
 
 jobs:
     dajob:
-      runs-on: ubuntu-latest
+      runs-on: self-hosted
       steps:
         - name: something
           run: |
@@ -33,21 +33,21 @@ jobs:
         #     trigger_workflow: true
         #     wait_workflow: true
 
-        - name: Login via Azure CLI
-          uses: azure/login@v1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+        # - name: Login via Azure CLI
+        #   uses: azure/login@v1
+        #   with:
+        #     creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-        - name: Checkout repository
-          uses: actions/checkout@v2
+        # - name: Checkout repository
+        #   uses: actions/checkout@v2
         
-        - name: clone supertokens
-          uses: actions/checkout@v2
-          with:
-            repository: 'supertokens/supertokens-docker-postgresql'
-            ref: 'master'
-            path: 'supertokens'
+        # - name: clone supertokens
+        #   uses: actions/checkout@v2
+        #   with:
+        #     repository: 'supertokens/supertokens-docker-postgresql'
+        #     ref: 'master'
+        #     path: 'supertokens'
 
-        - name: debug
-          run: |
-            tree && ls -l  && ls -ld supertokens && du -sh supertokens && ls -l supertokens && tree supertokens
+        # - name: debug
+        #   run: |
+        #     tree && ls -l  && ls -ld supertokens && du -sh supertokens && ls -l supertokens && tree supertokens
